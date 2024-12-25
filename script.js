@@ -101,7 +101,7 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
     errorDisplay.style.display = 'none';
 
     // 将 userId 拼接到查询参数中
-    https://randomnumberfunctionapp.azurewebsites.net/api/query_or_update_entity?code=BDY1vge8xaTfhZaJPWnXUZxfb6jK4zVJT8onUoOHvNDGAzFuwRCGww%3D%3D
+    // https://randomnumberfunctionapp.azurewebsites.net/api/query_or_update_entity?code=BDY1vge8xaTfhZaJPWnXUZxfb6jK4zVJT8onUoOHvNDGAzFuwRCGww%3D%3D
     const apiUrl = `https://randomnumberfunctionapp.azurewebsites.net/api/query_or_update_entity?id=${encodeURIComponent(userId)}&code=BDY1vge8xaTfhZaJPWnXUZxfb6jK4zVJT8onUoOHvNDGAzFuwRCGww%3D%3D`;
 
     try {
