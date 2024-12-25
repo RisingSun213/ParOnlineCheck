@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实验参与查询</title>
+    <title>链接有效性验证</title>
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #loader {
+            display: none;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <h1>实验参与查询</h1>
-    <label for="userId">输入用户ID：</label>
-    <input type="text" id="userId" placeholder="请输入ID">
-    <button id="queryBtn">查询</button>
-    <p id="result"></p>
+    <div class="container">
+        <h1>链接有效性验证工具</h1>
+        <button id="queryBtn">验证链接有效性</button>
+        <div id="loader">正在验证，请稍候...</div>
+        <div id="result"></div>
+    </div>
 
     <script>
         document.getElementById('queryBtn').addEventListener('click', async () => {
-            const userId = document.getElementById('userId').value;
+            // const urlToCheck = "https://www.naodao.com/project/914208733545107457";
+            const urlToCheck = "https://www.naodao.com/project/922641009605746689";
             const resultDisplay = document.getElementById('result');
+            const loader = document.getElementById('loader');
 
-            if (!userId) {
-                resultDisplay.textContent = "请输入有效的ID！";
-                return;
-            }
-
-            // 替换为您的Function App的URL
-            const functionAppUrl = "https://<your-function-app-name>.azurewebsites.net/api/<your-function-name>";
+            // 显示加载器
+            loader.style.display = 'block';
+            resultDisplay.innerHTML = ""; // 清空结果
 
             try {
-                const response = await fetch(`${functionAppUrl}?id=${userId}`);
+                // 发起 HEAD 请求验证链接是否有效
+                const response = await fetch(urlToCheck, {
+                    method: 'HEAD', // 使用 HEAD 方法只获取响应头部
+                });
+
                 if (response.ok) {
-                    const data = await response.json(); // 假设返回的是JSON格式
-                    const participated = data.participated; // 返回值中的字段名
-                    resultDisplay.textContent = participated ? "该用户已参加实验。" : "该用户未参加实验。";
+                    resultDisplay.innerHTML = `链接有效：<a href="${urlToCheck}" target="_blank">${urlToCheck}</a>`;
                 } else {
-                    resultDisplay.textContent = "查询失败，请稍后再试。";
+                    resultDisplay.innerHTML = `链接无效，状态码：${response.status}`;
                 }
             } catch (error) {
-                console.error("Error:", error);
-                resultDisplay.textContent = "发生错误，请检查网络连接或联系管理员。";
+                console.error("请求失败：", error);
+                resultDisplay.innerHTML = "验证链接时发生错误，请稍后再试。";
+            } finally {
+                // 隐藏加载器
+                loader.style.display = 'none';
             }
         });
     </script>
