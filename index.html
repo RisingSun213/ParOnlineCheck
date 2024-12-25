@@ -1,64 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链接有效性验证</title>
     <style>
-        .container {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            text-align: center;
-        }
-        #loader {
-            display: none;
-            margin-top: 10px;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 16px;
+        .spacer {
+            margin: 20px 0; /* 上下各20px的间距 */
         }
     </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验参与查询</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script> <!-- 引用外部的 JavaScript 文件 -->
 </head>
 <body>
     <div class="container">
-        <h1>链接有效性验证工具</h1>
-        <button id="queryBtn">验证链接有效性</button>
-        <div id="loader">正在验证，请稍候...</div>
-        <div id="result"></div>
+        <h1>实验参与查询</h1>
+        
+        <div class="input-group">
+            <p>您好，欢迎参加我们的线上实验！</p>
+                <p class="spacer"></p>
+                <p>为了确认您是否已经参与本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
+                <p class="spacer"></p>
+                <p>    （请输入准确的身份证号码，以便确保您的参与记录，并保证后续实验被试费的顺利发放。 您的隐私信息将严格保密。）</p>
+
+           
+
+
+            <p class="spacer"></p>
+
+            <input type="text" id="userId" placeholder="请输入身份证号" />
+        </div>
+        
+        <button id="queryBtn">查询</button>
+        
+        <div id="loader" class="loader" style="display: none;"></div> <!-- 加载指示器 -->
+        
+        <div id="result" class="result"></div> <!-- 结果展示区域 -->
+        <div id="error" class="error" style="display: none;"></div> <!-- 错误提示区域 -->
     </div>
-
-    <script>
-        document.getElementById('queryBtn').addEventListener('click', async () => {
-            // const urlToCheck = "https://www.naodao.com/project/914208733545107457";
-            const urlToCheck = "https://www.naodao.com/project/922641009605746689";
-            const resultDisplay = document.getElementById('result');
-            const loader = document.getElementById('loader');
-
-            // 显示加载器
-            loader.style.display = 'block';
-            resultDisplay.innerHTML = ""; // 清空结果
-
-            try {
-                // 发起 HEAD 请求验证链接是否有效
-                const response = await fetch(urlToCheck, {
-                    method: 'HEAD', // 使用 HEAD 方法只获取响应头部
-                });
-
-                if (response.ok) {
-                    resultDisplay.innerHTML = `链接有效：<a href="${urlToCheck}" target="_blank">${urlToCheck}</a>`;
-                } else {
-                    resultDisplay.innerHTML = `链接无效，状态码：${response.status}`;
-                }
-            } catch (error) {
-                console.error("请求失败：", error);
-                resultDisplay.innerHTML = "验证链接时发生错误，请稍后再试。";
-            } finally {
-                // 隐藏加载器
-                loader.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
