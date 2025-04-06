@@ -1,26 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <style>
         .spacer {
             margin: 20px 0; /* 上下各20px的间距 */
         }
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>通知</title>
+    <title>实验参与查询</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script> <!-- 引用外部的 JavaScript 文件 -->
 </head>
 <body>
     <div class="container">
-        <div class="message">
-            <p>本轮贷款决策实验招募名额暂满，感谢您的关注与支持！</p>
-            <p>后续会持续释放新的名额，请关注后续实验发布，我们期待您的参与。</p>
+        <h1>实验参与查询</h1>
+        
+        <div class="input-group">
+            <p>您好，欢迎参加我们的线上实验！</p>
+                <p class="spacer"></p>
+                <p>为了确认您是否已经参与本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
+                <p class="spacer"></p>
+                <p>    （请输入准确的身份证号码，以便确保您的参与记录，并保证后续实验被试费的顺利发放。 您的隐私信息将严格保密。）</p>
+
+           
+
+
+            <p class="spacer"></p>
+
+            <input type="text" id="userId" placeholder="请输入身份证号" />
         </div>
+        
+        <button id="queryBtn">查询</button>
+        
+        <div id="loader" class="loader" style="display: none;"></div> <!-- 加载指示器 -->
+        
+        <div id="result" class="result"></div> <!-- 结果展示区域 -->
+        <div id="error" class="error" style="display: none;"></div> <!-- 错误提示区域 -->
     </div>
 </body>
 </html>
