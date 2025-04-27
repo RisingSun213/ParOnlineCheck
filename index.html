@@ -1,47 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <style>
         .spacer {
             margin: 20px 0; /* 上下各20px的间距 */
         }
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .message {
-            margin-bottom: 30px;
-        }
-        .qr-section {
-            margin-top: 30px;
-        }
-        .qr-section img {
-            max-width: 200px; /* 控制图片大小 */
-            height: auto;
-        }
-        .qr-section p {
-            margin-top: 10px;
-            font-size: 16px;
-        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>通知</title>
+    <title>实验参与查询</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script> <!-- 引用外部的 JavaScript 文件 -->
 </head>
 <body>
     <div class="container">
-        <div class="message">
-            <p>本轮[在线资源分配]实验被试招募暂停，感谢您的关注与支持！</p>
-            <p>请持续关注后续实验的发布，我们期待您的参与。</p>
-        </div>
+        <h1>实验参与查询</h1>
+        
+        <div class="input-group">
+            <p>您好，欢迎参加我们的线上[在线资源分配]实验！</p>
+                <p class="spacer"></p>
+                <p>为了确认您是否已经参与本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
+                <p class="spacer"></p>
+                <p>    （请输入准确的身份证号码，以便确保您的参与记录，并保证后续实验被试费的顺利发放。 您的隐私信息将严格保密。）</p>
+            <p>    （留学生或其他没有身份证的参与者请联系实验主试黎同学。）</p>
+            <p></p>
+            <p>   为保证实验顺利进行，推荐优先使用Chrome浏览器 </p>
 
-        <div class="qr-section">
-       
-            <p>后续实验发布将优先在QQ群内通知<br>有意向的同学可以加此QQ群：855105597</p>
-                        <img src="your_qr_code_image.png" alt="QQ群二维码">
+           
 
+
+            <p class="spacer"></p>
+
+            <input type="text" id="userId" placeholder="请输入身份证号" />
         </div>
+        
+        <button id="queryBtn">查询</button>
+        
+        <div id="loader" class="loader" style="display: none;"></div> <!-- 加载指示器 -->
+        
+        <div id="result" class="result"></div> <!-- 结果展示区域 -->
+        <div id="error" class="error" style="display: none;"></div> <!-- 错误提示区域 -->
     </div>
 </body>
 </html>
