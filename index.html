@@ -1,42 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <style>
         .spacer {
             margin: 20px 0; /* 上下各20px的间距 */
         }
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .message {
-            margin-bottom: 30px;
-        }
-        .qr-section {
-            margin-top: 30px;
-        }
-        .qr-section img {
-            max-width: 200px; /* 控制图片大小 */
-            height: auto;
-        }
-        .qr-section p {
-            margin-top: 10px;
-            font-size: 16px;
-        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>通知</title>
+    <title>实验参与查询</title>
     <link rel="stylesheet" href="styles.css">
+<script>
+    const globalStatus = 3; // 管理员手动设置：0=关闭, 1=始终开放, 2=时间段始终关闭, 3=按时间逻辑判断
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const now = new Date();
+        const minutes = now.getMinutes();
+        const isValidTime = (minutes >= 0 && minutes < 15) || (minutes >= 28 && minutes < 45)|| (minutes >= 58 && minutes < 60);
+
+        const container = document.querySelector(".container");
+        const notice = document.getElementById("timeRestrictionNotice");
+
+        // 初始化所有内容隐藏
+        container.style.display = "none";
+        notice.style.display = "none";
+
+        // 逻辑判断
+        switch (globalStatus) {
+            case 0:
+                notice.innerText = "当前时间段无可参加的实验，请在规定时间内访问本页面。如有问题，请联系实验主试。";
+                notice.style.display = "block";
+                break;
+            case 1:
+                container.style.display = "block";
+                break;
+            case 2:
+                notice.innerText = " 当前时间段无可参加的实验，请在规定时间内访问本页面。如有问题，请联系实验主试。";
+                notice.style.display = "block";
+                break;
+            case 3:
+                if (isValidTime) {
+                    container.style.display = "block";
+                } else {
+                    notice.innerText = " 当前时间段无可参加的实验，请在规定时间内访问本页面。如有问题，请联系实验主试。";
+                    notice.style.display = "block";
+                }
+                break;
+        }
+    });
+</script>
+
+
+    <script src="script.js" defer></script> <!-- 引用外部的 JavaScript 文件 -->
 </head>
 <body>
     <div class="container">
-        <div class="message">
-            <p>实验程序调试阶段，本轮[在线资源分配]实验被试招募暂停！</p>
-            <p>请持续关注后续实验的发布，我们期待您的参与。</p>
+        <h1>实验参与查询</h1>
+        
+        <div class="input-group">
+            <p>您好，欢迎参加我们的【情景决策】线上实验！</p>
+                <p class="spacer"></p>
+                <p>为了确认您是否已经参与本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
+                <p class="spacer"></p>
+                <p>    （请输入准确的身份证号码，以便确保您的参与记录，并保证后续实验被试费的顺利发放。 您的隐私信息将严格保密。）</p>
+            <p class="spacer"></p>
+            <p>   为保证实验顺利进行，推荐优先使用Chrome浏览器 </p>
+
+           
+
+
+            <p class="spacer"></p>
+
+            <input type="text" id="userId" placeholder="请输入身份证号" />
         </div>
-
-
+        
+        <button id="queryBtn">查询</button>
+        
+        <div id="loader" class="loader" style="display: none;"></div> <!-- 加载指示器 -->
+        
+        <div id="result" class="result"></div> <!-- 结果展示区域 -->
+        <div id="error" class="error" style="display: none;"></div> <!-- 错误提示区域 -->
     </div>
+    <div id="timeRestrictionNotice" style="display: none; text-align: center; margin-top: 50px; font-size: 25px; color: orange;">
+    当前时间段无可参加的实验，请在规定时间内访问本页面。如有问题，请联系实验主试。
+</div>
+
 </body>
 </html>
