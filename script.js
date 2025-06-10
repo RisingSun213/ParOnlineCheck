@@ -83,6 +83,11 @@ function displayResult(message, isError = false) {
 
 // 查询按钮事件监听
 document.getElementById('queryBtn').addEventListener('click', async () => {
+
+    const btn = document.getElementById('queryBtn');
+    btn.disabled = true; // 禁用按钮
+    btn.textContent = "查询中，请稍候...勿重复点击";
+    
     const userId = document.getElementById('userId').value;
     const resultDisplay = document.getElementById('result');
     const loader = document.getElementById('loader');
@@ -154,6 +159,10 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
     } finally {
         // 隐藏加载指示器
         loader.style.display = 'none';
+        setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = "查询";
+    }, 500); // 延迟1秒解锁
     }
 });
 
