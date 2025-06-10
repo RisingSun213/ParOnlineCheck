@@ -50,6 +50,12 @@ button:hover {
     background-color: #45a049;
 }
 
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
 /* 加载指示器 */
 .loader {
     border: 8px solid #f3f3f3;
