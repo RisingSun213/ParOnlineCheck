@@ -162,7 +162,7 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
         setTimeout(() => {
         btn.disabled = false;
         btn.textContent = "查询";
-    }, 500); // 延迟1秒解锁
+    }, 800); // 延迟1秒解锁
     }
 });
 
