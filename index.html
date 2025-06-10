@@ -16,7 +16,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         const now = new Date();
         const minutes = now.getMinutes();
-        const isValidTime = (minutes >= 0 && minutes < 25) || (minutes >= 30 && minutes < 45)|| (minutes >= 58 && minutes < 60);
+        const isValidTime = (minutes >= 0 && minutes < 15) || (minutes >= 30 && minutes < 45);
 
         const container = document.querySelector(".container");
         const notice = document.getElementById("timeRestrictionNotice");
