@@ -139,10 +139,10 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
                 resultDisplay.innerHTML = "您已参加过本次实验，谢谢！";
                 break;
             case "1":
-                resultDisplay.innerHTML = `您尚未参加过本次实验，请点击以下链接进行参与：<a href="https://www.naodao.com/project/984824797752201218" target="_blank">点击这里参加实验</a> `;
+                resultDisplay.innerHTML = `您尚未参加过本次实验，请点击以下链接进行参与：<a href="https://www.naodao.com/project/985518034334781441" target="_blank">点击这里参加实验</a> `;
                 break;
             case "2":
-                resultDisplay.innerHTML = `您尚未参加过本次实验，请点击以下链接进行参与：<a href="https://www.naodao.com/project/984795066428297218" target="_blank">点击这里参加实验</a>`;
+                resultDisplay.innerHTML = `您尚未参加过本次实验，请点击以下链接进行参与：<a href="https://www.naodao.com/project/985517465373249537" target="_blank">点击这里参加实验</a>`;
                 break;
             case "3":
                 resultDisplay.innerHTML = "抱歉，当前实验轮次已招满，您可以参与后续的实验：";
