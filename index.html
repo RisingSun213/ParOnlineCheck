@@ -11,7 +11,7 @@
     <title>实验参与查询</title>
     <link rel="stylesheet" href="styles.css">
 <script>
-    const globalStatus = 3; // 管理员手动设置：0=关闭, 1=始终开放, 2=时间段始终关闭, 3=按时间逻辑判断
+    const globalStatus = 0; // 管理员手动设置：0=关闭, 1=始终开放, 2=时间段始终关闭, 3=按时间逻辑判断
 
     document.addEventListener("DOMContentLoaded", function () {
         const now = new Date();
@@ -60,7 +60,7 @@
         <div class="input-group">
             <p>您好，欢迎参加我们的【情景决策】线上实验！</p>
                 <p class="spacer"></p>
-                <p>为了确认您是否已经参与本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
+                <p>为了确认您是否已经参加过本次实验，我们需要您提供身份证号码。如果您未参加，系统将为您提供实验链接以便参与。</p>
                 <p class="spacer"></p>
                 <p>    （请输入准确的身份证号码，以便确保您的参与记录，并保证后续实验被试费的顺利发放。 您的隐私信息将严格保密。）</p>
             <p class="spacer"></p>
