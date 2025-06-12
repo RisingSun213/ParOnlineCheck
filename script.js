@@ -132,9 +132,18 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
 
         const status = data.Condition;
         console.log(`status: ${status}`);
+       
+        let finalStatus = status;
+        
+        // 如果 status 是 "1" 或 "2"，按 3:7 随机分配一个新值
+        if (status === "1" || status === "2") {
+          const rand = Math.random();
+          finalStatus = rand <= 0.2 ? "1" : "2";
+        }  
+        console.log(`remapped status: ${finalStatus}`);
 
         // 显示相应的结果
-        switch (status) {
+        switch (finalStatus) {
             case "0": // 注意返回可能是字符串
                 resultDisplay.innerHTML = "您已参加过本次实验，谢谢！";
                 break;
