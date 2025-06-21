@@ -171,7 +171,7 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
         setTimeout(() => {
         btn.disabled = false;
         btn.textContent = "查询";
-    }, 800); // 延迟1秒解锁
+    }, 1200); // 延迟1秒解锁
     }
 });
 
