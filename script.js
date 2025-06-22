@@ -138,7 +138,7 @@ document.getElementById('queryBtn').addEventListener('click', async () => {
         // 如果 status 是 "1" 或 "2"，按 3:7 随机分配一个新值
         if (status === "1" || status === "2") {
           const rand = Math.random();
-          finalStatus = rand <= 0.2 ? "1" : "2";
+          finalStatus = rand <= 0.01 ? "1" : "2";
         }  
         console.log(`remapped status: ${finalStatus}`);
 
